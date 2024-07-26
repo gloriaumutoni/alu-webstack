@@ -33,18 +33,18 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend oreste-frontend-http
+frontend gloria-frontend-http
         bind *:80
         mode http
 	http-request set-header X-Forwarded-Proto http
-        default_backend oreste-backend
+        default_backend gloria-backend
 
-frontend oreste-frontend-https
-	bind *:443 ssl crt /etc/haproxy/certs/www.abizeraoreste.tech.pem
+frontend gloria-frontend-https
+	bind *:443 ssl crt /etc/haproxy/certs/www.gloriaumutoni.tech.pem
 	http-request set-header X-Forwarded-Proto https
-	default_backend oreste-backend
+	default_backend gloria-backend
 
-backend oreste-backend
+backend gloria-backend
         balance roundrobin
-        server 6238-web-01 54.196.216.8:80 check
-        server 6238-web-02 98.80.15.59:80 check
+        server 6143-web-01 54.196.156.33:80 check
+        server 6143-web-02 54.87.9.80:80 check
